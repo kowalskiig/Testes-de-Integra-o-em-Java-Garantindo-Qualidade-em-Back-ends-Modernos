@@ -2,9 +2,6 @@ package br.com.alura.marketplace.application.v1.mapper;
 
 import br.com.alura.marketplace.application.v1.dto.FotoDto;
 import br.com.alura.marketplace.application.v1.dto.ProdutoDto;
-import br.com.alura.marketplace.domain.entity.Produto;
-import br.com.alura.marketplace.domain.usecase.CadastroProdutoUseCase;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -13,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 import java.math.BigDecimal;
 
 import static br.com.alura.marketplace.domain.entity.Produto.Status.AVAILABLE;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ProdutoDtoMapperTest {
 
@@ -50,6 +47,11 @@ class ProdutoDtoMapperTest {
                 var atual = mapper.converter(dto);
 
                 //Então
+                assertThat(atual.getNome())
+                        .isEqualTo("Produto Teste");
+
+                assertThat(atual.getCategoria())
+                        .isEqualTo("Categoria 1");
 
 
             }
